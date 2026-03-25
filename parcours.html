@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcours | Abderrahim Doufani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #0a0a0a; --bg2: #111111; --surface: #161616; --border: #222222; --border2: #2a2a2a;
+  --accent: #e8d5b0; --accent2: #c9a96e; --text: #f0ece4; --muted: #666666; --muted2: #444444;
+  --tag-bg: #1a1a1a; --radius: 10px;
+}
+
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 62px; background: rgba(10,10,10,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: var(--text); text-decoration: none; letter-spacing: -0.3px; }
+.nav-links { display: flex; gap: 38px; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.25s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after { width: 100%; }
+.nav-cv { font-size: 12px; font-weight: 500; color: var(--text); text-decoration: none; border: 1px solid var(--border2); padding: 6px 18px; border-radius: 6px; transition: border-color 0.25s, color 0.25s; }
+.nav-cv:hover { border-color: var(--accent); color: var(--accent); }
+
+/* PAGE HEADER */
+.page-header {
+  padding: 140px 52px 72px;
+  border-bottom: 1px solid var(--border);
+  opacity: 0; animation: fadeUp 0.8s 0.1s ease forwards;
+}
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.page-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(38px, 6vw, 64px); letter-spacing: -2px; color: var(--text); line-height: 1; }
+.page-desc { color: var(--muted); margin-top: 18px; font-size: 15px; max-width: 480px; line-height: 1.8; }
+
+/* CONTENT */
+.content { max-width: 860px; margin: 0 auto; padding: 80px 52px; }
+
+.block-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* EXP CARDS */
+.exp-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 38px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  transition: border-color 0.3s;
+}
+.exp-card:hover { border-color: var(--border2); }
+
+.exp-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+.exp-title { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; color: var(--text); }
+.exp-period {
+  font-size: 11px; font-weight: 600; letter-spacing: 1px;
+  color: var(--muted); background: var(--tag-bg);
+  border: 1px solid var(--border2);
+  padding: 4px 12px; border-radius: 20px;
+  white-space: nowrap;
+}
+.exp-company { font-size: 13px; color: var(--accent2); font-weight: 500; margin-bottom: 4px; }
+.exp-meta { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+.exp-intro { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 22px; }
+
+.missions { list-style: none; display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
+.missions li {
+  font-size: 13.5px; color: var(--muted);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 12px;
+  line-height: 1.7;
+}
+.missions li:last-child { border-bottom: none; }
+.missions li::before { content: '—'; color: var(--muted2); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+.missions li strong { color: var(--text); font-weight: 500; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag { font-size: 11.5px; color: var(--muted); background: var(--tag-bg); border: 1px solid var(--border2); padding: 4px 12px; border-radius: 20px; }
+.tag.hi { color: var(--accent2); border-color: rgba(201,169,110,0.2); background: rgba(201,169,110,0.05); }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 56px 0; }
+
+/* EDU */
+.edu-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 32px;
+  margin-bottom: 14px;
+  background: var(--surface);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: border-color 0.3s;
+}
+.edu-card:hover { border-color: var(--border2); }
+.edu-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.edu-desc { font-size: 12.5px; color: var(--muted); }
+.edu-right { text-align: right; }
+.edu-year { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
+.edu-school { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 40px 52px; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .page-header, .content { padding-left: 24px; padding-right: 24px; }
+  .exp-head { flex-direction: column; gap: 10px; }
+  .edu-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+  footer { padding: 32px 24px; flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Abderrahim Doufani</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="parcours.html" class="active">Parcours</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cv">CV</a>
+</nav>
+
+<div class="page-header">
+  <p class="eyebrow">Parcours</p>
+  <h1 class="page-title">Mon Parcours</h1>
+  <p class="page-desc">Formation académique et immersion professionnelle en environnements contrastés.</p>
+</div>
+
+<div class="content">
+
+  <!-- EXPÉRIENCES -->
+  <p class="block-label reveal">Expérience Professionnelle</p>
+
+  <!-- SNCF -->
+  <div class="exp-card reveal">
+    <div class="exp-head">
+      <div>
+        <div class="exp-title">Technicien Support IT</div>
+        <div class="exp-company">e.SNCF Solutions — Campus Rimbaud</div>
+        <div class="exp-meta">Stage de 2ème année · Campus multi-bâtiments</div>
+      </div>
+      <span class="exp-period">2026</span>
+    </div>
+    <p class="exp-intro">
+      Stage dans un grand compte de référence : une équipe de 20 techniciens IT au service de 8 000 utilisateurs. Processus ITSM rigoureux avec ServiceNow comme outil central, gestion des flux de tickets et permanences au comptoir numérique.
+    </p>
+    <ul class="missions">
+      <li><strong>Gestion des tickets</strong> — traitement des REQ, RITM et SCTASK via ServiceNow ; suivi et résolution des incidents utilisateurs</li>
+      <li><strong>Active Directory</strong> — déclaration des arrivées de collaborateurs, création et gestion des comptes et droits d'accès</li>
+      <li><strong>Comptoir numérique</strong> — accueil des utilisateurs, résolution des incidents sur site, installation de périphériques</li>
+      <li><strong>Intervention autonome</strong> — mission de 5H en autonomie complète chez un client externe (Transilien)</li>
+      <li><strong>Back-office</strong> — suivi des rendez-vous, documentation et reporting des interventions</li>
+    </ul>
+    <div class="tags">
+      <span class="tag hi">ServiceNow</span>
+      <span class="tag hi">Active Directory</span>
+      <span class="tag">RITM / REQ / SCTASK</span>
+      <span class="tag">ITSM</span>
+      <span class="tag">Support N1/N2</span>
+      <span class="tag">Grand compte</span>
+    </div>
+  </div>
+
+  <!-- JB Consultant -->
+  <div class="exp-card reveal">
+    <div class="exp-head">
+      <div>
+        <div class="exp-title">Technicien Réseau & Systèmes</div>
+        <div class="exp-company">JB Consultant IT — en prestation chez iDEACTIF</div>
+        <div class="exp-meta">Stage de 1ère année · iDEACTIF (20M€ CA)</div>
+      </div>
+      <span class="exp-period">2025</span>
+    </div>
+    <p class="exp-intro">
+      Prestation informatique chez iDEACTIF : stage polyvalent alliant support utilisateur quotidien et conduite d'un projet d'infrastructure Wi-Fi 6 piloté en quasi-autonomie avec mon tuteur.
+    </p>
+    <ul class="missions">
+      <li><strong>Assistance utilisateur</strong> — support back-office, résolution des incidents du quotidien</li>
+      <li><strong>Gestion Active Directory</strong> — création des comptes pour les arrivées (stagiaires, alternants, employés)</li>
+      <li><strong>Projet Wi-Fi 6</strong> — analyse du problème de débit, choix matériel Cisco, déploiement des bornes sur tout le local</li>
+      <li><strong>Rôle chef de projet</strong> — rédaction de l'analyse, coordination avec le tuteur, installation et tests de validation</li>
+    </ul>
+    <div class="tags">
+      <span class="tag hi">Cisco Wi-Fi 6</span>
+      <span class="tag hi">Active Directory</span>
+      <span class="tag">Fortinet Firewall</span>
+      <span class="tag">Gestion de projet</span>
+      <span class="tag">Support N1</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FORMATION -->
+  <p class="block-label reveal">Formation Académique</p>
+
+  <div class="edu-card reveal">
+    <div>
+      <div class="edu-title">BTS SIO Option SISR</div>
+      <div class="edu-desc">Infrastructures systèmes, réseaux, services (AD/DNS/DHCP), virtualisation, cybersécurité</div>
+    </div>
+    <div class="edu-right">
+      <div class="edu-year">2024 — 2026</div>
+      <div class="edu-school">Lycée René Descartes · Champs-sur-Marne</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">ABDERRAHIM.</div>
+  <span class="footer-copy">© 2026 Abderrahim Doufani — Portfolio BTS SIO SISR</span>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
