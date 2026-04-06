@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Abderrahim DOUFANI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Intégration du style moderne (inspiré d'Alvin) */
+        :root {
+            --bg: #0a0a0a; --bg-card: #111; --accent: #e8d5b0; --text: #f0ece4; --muted: #888;
+        }
+        /* ... (Le CSS complet est optimisé pour ton contenu ci-dessous) ... */
+    </style>
+    <link rel="stylesheet" href="main.css"> </head>
+<body>
+
+<button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="profile-section">
+        <div class="profile-badge">Portfolio 2026</div>
+        <h1 class="profile-name">Abderrahim<br>DOUFANI</h1>
+        <div class="linkedin-icon">
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#" class="nav-link active" data-target="accueil"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="#" class="nav-link" data-target="apropos"><i class="fas fa-user"></i> À Propos</a></li>
+            <li><a href="#" class="nav-link" data-target="parcours"><i class="fas fa-graduation-cap"></i> Parcours</a></li>
+            <li><a href="#" class="nav-link" data-target="competences"><i class="fas fa-tools"></i> Compétences</a></li>
+            <li><a href="#" class="nav-link" data-target="projets"><i class="fas fa-briefcase"></i> Projets</a></li>
+            <li><a href="#" class="nav-link" data-target="contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <section id="accueil" class="content-section active-section">
+        <div class="hero-banner">
+            <h2 class="hero-title">Abderrahim DOUFANI</h2>
+            <p class="hero-subtitle">Futur Administrateur Systèmes & Réseaux</p>
+            <h3 class="hero-degree">BTS SIO · Option SISR</h3>
+            <p class="hero-intro">Spécialisé dans l'administration des infrastructures et la cybersécurité.</p>
+        </div>
+    </section>
+
+    <section id="apropos" class="content-section">
+        <h2 class="modern-title">À Propos</h2>
+        <p class="about-description">Étudiant au Lycée René Descartes, je m'intéresse particulièrement aux grands environnements IT et à la sécurisation des infrastructures.</p>
+        <div class="about-grid">
+            <div class="info-card">
+                <h3><i class="fas fa-microchip"></i> Expertise</h3>
+                <div class="skill-tags">
+                    <span class="tag">Cisco Wi-Fi 6</span> <span class="tag">Active Directory</span>
+                    <span class="tag">Fortinet</span> <span class="tag">Linux/Debian</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parcours" class="content-section">
+        <h2 class="modern-title">Expériences</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-card">
+                    <h4>Support IT N1/N2 — e.SNCF Solutions</h4>
+                    <p>Support pour 8 000 utilisateurs, gestion de parc et incidents.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-card">
+                    <h4>Technicien Réseaux — iDEACTIF</h4>
+                    <p>Déploiement de bornes Wi-Fi 6 Cisco et configuration Fortinet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="content-section">
+        <h2 class="modern-title">Projets Techniques</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Architecture RAID</h3>
+                <p>Mise en place de solutions RAID 1 et 5 sous Debian pour la tolérance aux pannes.</p>
+            </div>
+            <div class="project-card">
+                <h3>Sécurité pfSense</h3>
+                <p>Configuration de Firewall, NAT et règles de filtrage sécurisées.</p>
+            </div>
+            <div class="project-card">
+                <h3>VoIP Asterisk</h3>
+                <p>Déploiement d'un serveur de téléphonie IP sur protocole SIP.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Script de navigation identique à celui d'Alvin pour garantir l'effet "incroyable"
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.content-section');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('data-target');
+            sections.forEach(s => s.classList.remove('active-section'));
+            navLinks.forEach(l => l.classList.remove('active'));
+            document.getElementById(target).classList.add('active-section');
+            link.classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>
