@@ -10,71 +10,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* --- CORRECTIFS DE LARGEUR ET SYMÉTRIE --- */
+        /* --- FIX LISIBILITÉ ET MISE EN PAGE --- */
         
-        /* On limite la largeur des sections pour que ça ne s'étale pas trop */
-        .stage-section, .cr-section {
-            max-width: 1100px;
+        .stage-section {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* Centre les cartes de missions (important pour la 3ème carte seule) */
         .stage-cards {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* C'est ça qui crée la symétrie */
+            justify-content: center;
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .stage-card {
-            flex: 0 1 350px; /* Largeur fixe pour éviter l'étirement excessif */
-            min-height: 300px;
-        }
-
-        /* --- NOUVELLE SECTION COMPTE RENDU --- */
-        .cr-section {
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(37, 99, 235, 0.03); /* Léger fond bleu très clair */
-            border-radius: 24px;
-            margin: 40px auto;
-        }
-
-        .cr-title {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        /* --- MODALES RÉTRÉCIES --- */
-        .modal-content {
-            max-width: 800px; /* On réduit ici pour éviter le "bout en bout" */
-            width: 90%;
-            margin: 40px auto;
+            flex: 0 1 380px; /* Plus large pour que le texte ne soit pas compressé */
+            background: var(--card);
+            padding: 35px; /* Plus d'espace interne */
             border-radius: 20px;
-            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .stage-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .stage-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        /* --- SECTION COMPTE RENDU --- */
+        .cr-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 50px 30px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 24px;
+            border: 1px dashed var(--accent);
         }
 
         .download-btn {
             background: var(--accent);
             color: white !important;
-            padding: 15px 30px;
-            border-radius: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: transform 0.2s ease;
+            gap: 12px;
+            margin-top: 20px;
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            background: #1d4ed8;
+        /* --- MODALES RÉTRÉCIES --- */
+        .modal-content {
+            max-width: 750px;
+            width: 90%;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 24px;
         }
     </style>
 </head>
@@ -91,52 +102,52 @@
         <li><a href="veille.html">Veille</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
     </button>
 </nav>
 
 <section class="proj-hero rv">
-    <div class="proj-container">
-        <h1>Mes Projets</h1>
-        <p>Découvrez les missions techniques et les projets d'infrastructure réalisés en entreprise et en formation.</p>
+    <div class="proj-container" style="text-align: center;">
+        <h1>Mes Projets & Missions</h1>
+        <p>Infrastructures, systèmes et réseaux : mes réalisations concrètes.</p>
     </div>
 </section>
 
 <section class="cr-section rv">
-    <h2 class="cr-title">COMPTE RENDU D’ACTIVITÉ EN périodes de stage</h2>
-    <p style="margin-bottom: 25px; color: var(--muted);">Retrouvez mon tableau de synthèse récapitulant l'ensemble de mes compétences validées.</p>
+    <h2 style="font-weight: 800; color: var(--primary); margin-bottom: 10px;">COMPTE RENDU D’ACTIVITÉ</h2>
+    <p>Tableau de synthèse des compétences validées en périodes de stage.</p>
     <a href="assets/tableau-synthese-doufani.pdf" class="download-btn" download>
-        <i class="fa-solid fa-file-pdf"></i> Télécharger mon Tableau de Synthèse (E4)
+        <i class="fa-solid fa-file-pdf"></i> Télécharger le Tableau de Synthèse (E4)
     </a>
 </section>
 
-<section class="stage-section rv">
-    <div style="text-align: center;">
-        <h2 style="font-weight: 800; font-size: 1.8rem; color: var(--primary);">Missions réalisées en entreprise et en formation</h2>
-        <div style="width: 60px; height: 4px; background: var(--accent); margin: 15px auto; border-radius: 2px;"></div>
+<section class="stage-section">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h2 style="font-weight: 800; color: var(--primary);">Missions en Entreprise</h2>
+        <div style="width: 50px; height: 4px; background: var(--accent); margin: 10px auto; border-radius: 2px;"></div>
     </div>
 
     <div class="stage-cards">
         <div class="stage-card rv">
-            <div class="stage-badge">SNCF</div>
+            <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">SNCF - DSNU</div>
             <h3>Support & Incidents</h3>
-            <p>Gestion des tickets ServiceNow et administration Active Directory (Mon-ad sncf).</p>
-            <button class="proj-btn" onclick="openIncidentModal()">En savoir plus</button>
+            <p>Gestion des tickets ServiceNow (REQ, RITM, SCTASK) et administration des comptes via Active Directory (Mon-ad).</p>
+            <button class="proj-btn" onclick="openModal('incidentModal')">Détails de la mission</button>
         </div>
 
         <div class="stage-card rv">
-            <div class="stage-badge">IDEACTIF</div>
+            <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">IDEACTIF</div>
             <h3>Déploiement WiFi 6</h3>
-            <p>Expansion du réseau de bornes WiFi6 et vérification des routeurs sur serveur virtuel.</p>
-            <button class="proj-btn" onclick="openWifiModal()">En savoir plus</button>
+            <p>Mise à jour de l'infrastructure sans fil et supervision des routeurs sur serveurs virtuels pour l'agence.</p>
+            <button class="proj-btn" onclick="openModal('wifiModal')">Détails de la mission</button>
         </div>
 
         <div class="stage-card rv">
-            <div class="stage-badge">IDEACTIF</div>
-            <h3>Badges Morphomanager</h3>
-            <p>Configuration des accès physiques et sécurité des locaux via badges biométriques.</p>
-            <button class="proj-btn" onclick="openBadgeModal()">En savoir plus</button>
+            <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">IDEACTIF</div>
+            <h3>Badges & Sécurité</h3>
+            <p>Configuration des accès physiques via Morphomanager et gestion de la surveillance IP du site.</p>
+            <button class="proj-btn" onclick="openModal('badgeModal')">Détails de la mission</button>
         </div>
     </div>
 </section>
@@ -144,9 +155,9 @@
 <div class="modal" id="incidentModal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('incidentModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Support et Gestion d'Incidents - SNCF</h2>
+        <h2>Support IT - SNCF</h2>
         <div class="modal-body">
-            <p><strong>Missions :</strong> Gestion ServiceNow (REQ, RITM, SCTASK) et administration Active Directory.</p>
+            <p>Intervention sur les postes clients, résolution d'incidents matériels et logiciels via ServiceNow.</p>
         </div>
     </div>
 </div>
@@ -154,9 +165,9 @@
 <div class="modal" id="wifiModal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('wifiModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Déploiement WiFi 6 - IDEACTIF</h2>
+        <h2>Infrastructure WiFi 6</h2>
         <div class="modal-body">
-            <p><strong>Détails :</strong> Mise à jour de l'infrastructure réseau sans fil et maintenance des routeurs virtuels.</p>
+            <p>Installation et configuration de bornes WiFi6 pour améliorer la connectivité de l'entreprise.</p>
         </div>
     </div>
 </div>
@@ -164,24 +175,21 @@
 <div class="modal" id="badgeModal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('badgeModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Badges IDEACTIF</h2>
+        <h2>Contrôle d'Accès</h2>
         <div class="modal-body">
-            <p><strong>Détails :</strong> Utilisation du logiciel Morphomanager pour le contrôle d'accès sécurisé.</p>
+            <p>Gestion logicielle des droits d'entrée et maintenance des lecteurs biométriques.</p>
         </div>
     </div>
 </div>
 
-<footer>
-    <div class="f-logo">ABDERRAHIM<span>.</span></div>
-    <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
+<footer style="margin-top: 60px;">
+    <p>&copy; 2026 Abderrahim DOUFANI</p>
 </footer>
 
 <script src="script.js"></script>
 <script>
-    function openIncidentModal() { document.getElementById('incidentModal').classList.add('active'); }
-    function openWifiModal()     { document.getElementById('wifiModal').classList.add('active'); }
-    function openBadgeModal()    { document.getElementById('badgeModal').classList.add('active'); }
-    function closeModal(id)      { document.getElementById(id).classList.remove('active'); }
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 </script>
 </body>
 </html>
