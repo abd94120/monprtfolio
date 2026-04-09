@@ -9,9 +9,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ajustements spécifiques pour la symétrie et la largeur */
+        .stage-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .stage-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centre les cartes si elles sont impaires */
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stage-card {
+            flex: 1 1 350px; /* Largeur de base des cartes */
+            max-width: 500px; /* Empêche qu'elles deviennent trop géantes */
+        }
+
+        /* Ajustement des modales pour éviter l'effet "bout en bout" */
+        .modal-content {
+            max-width: 900px;
+            width: 92%;
+            margin: 50px auto;
+            border-radius: 20px;
+        }
+
+        /* Style pour la nouvelle section de compte rendu */
+        .cr-section {
+            padding: 40px 24px;
+            text-align: center;
+            background: rgba(37, 99, 235, 0.03);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+        
+        .proj-btn.download-btn {
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .proj-btn.download-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
-<div class="bg-mesh"></div>
+<div class=\"bg-mesh\"></div>
 
 <nav>
     <a href="index.html" class="logo">Abderrahim <span>DOUFANI</span></a>
@@ -19,208 +76,150 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="parcours.html">Parcours</a></li>
         <li><a href="competences.html">Compétences</a></li>
-        <li><a href="projets.html">Projets</a></li>
+        <li><a href="projets.html" class="active">Projets</a></li>
         <li><a href="veille.html">Veille</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
-    <div class="nav-btns">
-        <button class="theme-toggle" id="themeToggle"><i class="fa-solid fa-moon"></i></button>
-        <a href="cv_doufani_abderrahim.pdf" class="btn btn-dark" target="_blank"><i class="fa-solid fa-download"></i> CV</a>
-    </div>
 </nav>
 
-<div class="page-header">
-    <h1 class="rv">Mes Projets</h1>
-    <p class="rv">Missions réalisées en entreprise et en formation.</p>
-</div>
-
-<section>
-    <div class="sec-head rv">
-        <h2 class="sec-title"><i class="fa-solid fa-briefcase" style="color:var(--accent);"></i> Missions en Entreprise</h2>
-        <p class="sec-sub">E-SNCF-SOLUTION &amp; IDEACTIF — Stages et missions IT (2023 – 2026)</p>
+<section class="proj-hero rv">
+    <div class="proj-container">
+        <h1>Mes Projets</h1>
+        <p>Découvrez les missions techniques et les projets d'infrastructure que j'ai réalisés durant mon parcours en BTS SIO SISR.</p>
     </div>
+</section>
 
-    <!-- Bannière stats globales -->
-    <div class="stage-stats rv">
-        <div class="stage-stat"><div class="ss-num">3</div><div class="ss-label">Projets menés</div></div>
-        <div class="stage-stat"><div class="ss-num">2</div><div class="ss-label">Entreprises</div></div>
-        <div class="stage-stat"><div class="ss-num">2</div><div class="ss-label">Années d'expérience</div></div>
-        <div class="stage-stat"><div class="ss-num">3</div><div class="ss-label">Domaines couverts</div></div>
+<section class="cr-section rv">
+    <h2 style="font-weight: 800; font-size: 1.6rem; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+        COMPTE RENDU D’ACTIVITÉ EN périodes de stage
+    </h2>
+    <a href="assets/tableau-synthese-doufani.pdf" class="proj-btn download-btn" download>
+        <i class="fa-solid fa-file-pdf"></i> Télécharger mon Tableau de Synthèse (E4)
+    </a>
+</section>
+
+<section class="stage-section rv">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-weight: 800; font-size: 1.8rem; color: var(--primary);">Missions réalisées en entreprise et en formation</h2>
+        <div style="width: 60px; height: 4px; background: var(--accent); margin: 15px auto; border-radius: 2px;"></div>
     </div>
 
     <div class="stage-cards">
-        <div class="stage-card rv" onclick="openIncidentModal()">
-            <div class="pci"><i class="fa-solid fa-ticket"></i></div>
-            <div class="pcb">
-                <div class="pct">Support &amp; Gestion d'Incidents <span class="bs bs-done">E-SNCF-SOLUTION</span></div>
-                <p class="pcd">Utilisation de ServiceNow pour gérer les tickets (REQ, RITM, SCTASK) et intervention sur l'Active Directory interne (Mon-ad sncf).</p>
-                <div class="card-techs">
-                    <span class="ct">ServiceNow</span><span class="ct">Active Directory</span><span class="ct">Support IT</span>
-                </div>
+        <div class="stage-card rv">
+            <div class="stage-badge">SNCF-E</div>
+            <h3>Support et Gestion d'Incidents</h3>
+            <p>Gestion des tickets (REQ, RITM, SCTASK) via ServiceNow et administration des comptes utilisateurs sur Active Directory.</p>
+            <div class="stage-tags">
+                <span class="tag">ServiceNow</span>
+                <span class="tag">Active Directory</span>
+                <span class="tag">Support IT</span>
             </div>
-            <i class="fa-solid fa-chevron-right pca"></i>
+            <button class="proj-btn" onclick="openIncidentModal()">
+                <i class="fa-solid fa-circle-info"></i> Voir les détails
+            </button>
         </div>
-        <div class="stage-card rv" onclick="openWifiModal()">
-            <div class="pci"><i class="fa-solid fa-wifi"></i></div>
-            <div class="pcb">
-                <div class="pct">Déploiement Réseau WiFi 6 &amp; Infrastructure <span class="bs bs-done">IDEACTIF</span></div>
-                <p class="pcd">Mission en tant qu'assistant chef de projet pour la mise à jour et l'expansion du réseau WiFi 6. Contrôle des routeurs virtuels et mise en service des caméras de surveillance.</p>
-                <div class="card-techs">
-                    <span class="ct">WiFi 6</span><span class="ct">Caméras IP</span><span class="ct">Routeurs virtuels</span>
-                </div>
+
+        <div class="stage-card rv">
+            <div class="stage-badge">IDEACTIF</div>
+            <h3>Déploiement WiFi 6</h3>
+            <p>Assistant chef de projet pour la mise à jour de l'infrastructure sans fil. Configuration de routeurs sur serveurs virtuels.</p>
+            <div class="stage-tags">
+                <span class="tag">WiFi 6</span>
+                <span class="tag">Routeurs Virtuels</span>
+                <span class="tag">Infrastructure</span>
             </div>
-            <i class="fa-solid fa-chevron-right pca"></i>
+            <button class="proj-btn" onclick="openWifiModal()">
+                <i class="fa-solid fa-circle-info"></i> Voir les détails
+            </button>
         </div>
-        <div class="stage-card rv" onclick="openBadgeModal()">
-            <div class="pci"><i class="fa-solid fa-id-badge"></i></div>
-            <div class="pcb">
-                <div class="pct">Gestion des Accès Physiques <span class="bs bs-done">IDEACTIF</span></div>
-                <p class="pcd">Configuration et gestion de badges d'accès avec le logiciel Morphomanager.</p>
-                <div class="card-techs">
-                    <span class="ct">Morphomanager</span><span class="ct">Sécurité physique</span>
-                </div>
+
+        <div class="stage-card rv">
+            <div class="stage-badge">IDEACTIF</div>
+            <h3>Gestion des Accès Physiques</h3>
+            <p>Mise en place et configuration de badges de sécurité via le logiciel Morphomanager pour le contrôle d'accès de l'agence.</p>
+            <div class="stage-tags">
+                <span class="tag">Morphomanager</span>
+                <span class="tag">Sécurité</span>
+                <span class="tag">Caméras IP</span>
             </div>
-            <i class="fa-solid fa-chevron-right pca"></i>
+            <button class="proj-btn" onclick="openBadgeModal()">
+                <i class="fa-solid fa-circle-info"></i> Voir les détails
+            </button>
         </div>
     </div>
 </section>
 
-<!-- ── Modale Incident SNCF ─────────────────────── -->
-<div class="modal-overlay" id="incidentModal" onclick="closeModal('incidentModal')">
-    <div class="modal-box" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeModal('incidentModal')"><i class="fa-solid fa-xmark"></i></button>
-        <div class="modal-header">
-            <div class="modal-ico" style="background:linear-gradient(135deg,#3b82f622,#3b82f611); color:#3b82f6;"><i class="fa-solid fa-ticket"></i></div>
-            <div>
-                <div class="modal-title">Support &amp; Gestion d'Incidents</div>
-                <div class="modal-sub">E-SNCF-SOLUTION — Direction des services numériques aux utilisateurs · Saint-Denis · Janv. – Mars 2026</div>
-            </div>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-bullseye"></i> Contexte &amp; Objectif</h3>
-            <p>Intégré à la Direction des Services Numériques aux Utilisateurs de SNCF-E, j'ai pris en charge la gestion quotidienne des tickets d'incidents et de demandes IT, en assurant également des interventions directes sur l'annuaire Active Directory.</p>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-list-check"></i> Missions réalisées</h3>
-            <ul class="mlist">
-                <li><strong>Traitement des tickets ServiceNow</strong> — Prise en charge et résolution des tickets de type REQ (requêtes), RITM (éléments de catalogue) et SCTASK (tâches de changement).</li>
-                <li><strong>Administration Active Directory</strong> — Création, modification et désactivation de comptes utilisateurs via l'outil interne Mon-ad sncf.</li>
-                <li><strong>Accompagnement utilisateur</strong> — Support de proximité et à distance pour les agents SNCF rencontrant des incidents techniques.</li>
-            </ul>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-tags"></i> Technologies utilisées</h3>
-            <div class="card-techs" style="margin-top:8px;">
-                <span class="ct">ServiceNow</span><span class="ct">Active Directory</span><span class="ct">Support IT</span><span class="ct">Windows</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ── Modale WiFi 6 IDEACTIF ─────────────────────── -->
-<div class="modal-overlay" id="wifiModal" onclick="closeModal('wifiModal')">
-    <div class="modal-box" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeModal('wifiModal')"><i class="fa-solid fa-xmark"></i></button>
-        <div class="modal-header">
-            <div class="modal-ico" style="background:linear-gradient(135deg,#10b98122,#10b98111); color:#10b981;"><i class="fa-solid fa-wifi"></i></div>
-            <div>
-                <div class="modal-title">Déploiement Réseau WiFi 6 &amp; Infrastructure</div>
-                <div class="modal-sub">IDEACTIF — Asnières-sur-Seine · Janv. 2023 – Juin 2025</div>
-            </div>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-bullseye"></i> Contexte &amp; Objectif</h3>
-            <p>En tant qu'assistant chef de projet chez IDEACTIF, j'ai participé activement à la modernisation et à l'expansion de l'infrastructure réseau de l'agence, notamment le passage au WiFi 6 et la mise en service des équipements de surveillance.</p>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-list-check"></i> Missions réalisées</h3>
-            <ul class="mlist">
-                <li><strong>Déploiement WiFi 6</strong> — Assistance à la planification et à la mise en œuvre du nouveau réseau sans fil WiFi 6 au sein des locaux de l'agence.</li>
-                <li><strong>Contrôle des routeurs virtuels</strong> — Configuration et supervision des équipements routeurs virtuels de l'infrastructure.</li>
-                <li><strong>Mise en service des caméras IP</strong> — Installation et paramétrage des caméras de surveillance IP sur le réseau.</li>
-                <li><strong>Maintenance</strong> — Interventions de maintenance préventive et corrective sur routeurs, caméras IP et imprimantes réseau.</li>
-            </ul>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-tags"></i> Technologies utilisées</h3>
-            <div class="card-techs" style="margin-top:8px;">
-                <span class="ct">WiFi 6</span><span class="ct">Caméras IP</span><span class="ct">Routeurs virtuels</span><span class="ct">TCP/IP</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ── Modale Badge IDEACTIF ─────────────────────── -->
-<div class="modal-overlay" id="badgeModal" onclick="closeModal('badgeModal')">
-    <div class="modal-box" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeModal('badgeModal')"><i class="fa-solid fa-xmark"></i></button>
-        <div class="modal-header">
-            <div class="modal-ico" style="background:linear-gradient(135deg,#f59e0b22,#f59e0b11); color:#f59e0b;"><i class="fa-solid fa-id-badge"></i></div>
-            <div>
-                <div class="modal-title">Gestion des Accès Physiques</div>
-                <div class="modal-sub">IDEACTIF — Asnières-sur-Seine · Janv. 2023 – Juin 2025</div>
-            </div>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-bullseye"></i> Contexte &amp; Objectif</h3>
-            <p>Dans le cadre de ma mission chez IDEACTIF, j'ai été chargé de la gestion des accès physiques aux locaux via le système de contrôle de badges Morphomanager.</p>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-list-check"></i> Missions réalisées</h3>
-            <ul class="mlist">
-                <li><strong>Configuration des badges</strong> — Création et paramétrage des badges d'accès pour les collaborateurs via le logiciel Morphomanager.</li>
-                <li><strong>Gestion des droits d'accès</strong> — Attribution, modification et révocation des droits d'accès selon les profils utilisateurs.</li>
-                <li><strong>Maintenance du système</strong> — Suivi du bon fonctionnement du système de contrôle d'accès physique.</li>
-            </ul>
-        </div>
-        <div class="dsec">
-            <h3><i class="fa-solid fa-tags"></i> Technologies utilisées</h3>
-            <div class="card-techs" style="margin-top:8px;">
-                <span class="ct">Morphomanager</span><span class="ct">Sécurité physique</span><span class="ct">Contrôle d'accès</span>
-            </div>
-        </div>
-    </div>
-</div>
-
 <footer>
-    <div class="f-logo">ABDOU<span style="color:var(--accent);">.</span></div>
+    <div class="f-logo">ABDERRAHIM<span style="color:var(--accent);">.</span></div>
     <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
     <div class="f-socials">
-        <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
         <a href="mailto:douaniabdrahim@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
     </div>
 </footer>
 
-<!-- ── Lightbox ─────────────────────── -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
+<div class="modal" id="incidentModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('incidentModal')"><i class="fa-solid fa-xmark"></i></button>
+        <h2>Support et Gestion d'Incidents - SNCF</h2>
+        <div class="modal-body">
+            <p><strong>Contexte :</strong> Intervention au sein de la DSNU de la SNCF.</p>
+            <p><strong>Missions :</strong></p>
+            <ul>
+                <li>Gestion des incidents et demandes via <strong>ServiceNow</strong>.</li>
+                <li>Administration de l'<strong>Active Directory</strong> (Mon-ad sncf) : réinitialisation de mots de passe, gestion des droits.</li>
+                <li>Accompagnement et restitution des postes clients.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="wifiModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('wifiModal')"><i class="fa-solid fa-xmark"></i></button>
+        <h2>Déploiement WiFi 6 - IDEACTIF</h2>
+        <div class="modal-body">
+            <p><strong>Mission :</strong> Expansion du réseau sans fil de l'agence.</p>
+            <ul>
+                <li>Contrôle et vérification des routeurs WiFi sur serveur virtuel.</li>
+                <li>Mise en marche des caméras de surveillance liées au serveur.</li>
+                <li>Maintenance matérielle (écrans, imprimantes).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="badgeModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('badgeModal')"><i class="fa-solid fa-xmark"></i></button>
+        <h2>Gestion des Accès Physiques - IDEACTIF</h2>
+        <div class="modal-body">
+            <p><strong>Logiciel :</strong> Morphomanager.</p>
+            <ul>
+                <li>Configuration des badges d'accès pour les collaborateurs.</li>
+                <li>Paramétrage des droits d'accès selon les zones sécurisées.</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <script src="script.js"></script>
 <script>
-function openIncidentModal() { document.getElementById('incidentModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-function openWifiModal()     { document.getElementById('wifiModal').classList.add('active');     document.body.style.overflow = 'hidden'; }
-function openBadgeModal()    { document.getElementById('badgeModal').classList.add('active');    document.body.style.overflow = 'hidden'; }
-function closeModal(id)      { document.getElementById(id).classList.remove('active');           document.body.style.overflow = ''; }
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { ['incidentModal','wifiModal','badgeModal'].forEach(closeModal); } });
-function openLightbox(src, caption) {
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightboxCaption').textContent = caption || '';
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-function closeLightbox(e) {
-    if (!e || e.target !== document.getElementById('lightboxImg')) {
-        document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
+    function openIncidentModal() { document.getElementById('incidentModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function openWifiModal()     { document.getElementById('wifiModal').classList.add('active');     document.body.style.overflow = 'hidden'; }
+    function openBadgeModal()    { document.getElementById('badgeModal').classList.add('active');    document.body.style.overflow = 'hidden'; }
+    function closeModal(id)      { document.getElementById(id).classList.remove('active');           document.body.style.overflow = ''; }
+    
+    // Fermer avec Echap
+    document.addEventListener('keydown', function(e) { 
+        if (e.key === 'Escape') { 
+            ['incidentModal','wifiModal','badgeModal'].forEach(closeModal); 
+        } 
+    });
 </script>
 </body>
 </html>
