@@ -10,65 +10,76 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Ajustements spécifiques pour la symétrie et la largeur */
-        .stage-section {
-            max-width: 1200px;
+        /* --- CORRECTIFS DE LARGEUR ET SYMÉTRIE --- */
+        
+        /* On limite la largeur des sections pour que ça ne s'étale pas trop */
+        .stage-section, .cr-section {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 20px;
         }
 
+        /* Centre les cartes de missions (important pour la 3ème carte seule) */
         .stage-cards {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Centre les cartes si elles sont impaires */
+            justify-content: center; /* C'est ça qui crée la symétrie */
             gap: 30px;
             margin-top: 40px;
         }
 
         .stage-card {
-            flex: 1 1 350px; /* Largeur de base des cartes */
-            max-width: 500px; /* Empêche qu'elles deviennent trop géantes */
+            flex: 0 1 350px; /* Largeur fixe pour éviter l'étirement excessif */
+            min-height: 300px;
         }
 
-        /* Ajustement des modales pour éviter l'effet "bout en bout" */
-        .modal-content {
-            max-width: 900px;
-            width: 92%;
-            margin: 50px auto;
-            border-radius: 20px;
-        }
-
-        /* Style pour la nouvelle section de compte rendu */
+        /* --- NOUVELLE SECTION COMPTE RENDU --- */
         .cr-section {
-            padding: 40px 24px;
             text-align: center;
-            background: rgba(37, 99, 235, 0.03);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
+            padding: 60px 20px;
+            background: rgba(37, 99, 235, 0.03); /* Léger fond bleu très clair */
+            border-radius: 24px;
+            margin: 40px auto;
         }
-        
-        .proj-btn.download-btn {
-            background: var(--primary);
-            color: white;
-            padding: 14px 28px;
+
+        .cr-title {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* --- MODALES RÉTRÉCIES --- */
+        .modal-content {
+            max-width: 800px; /* On réduit ici pour éviter le "bout en bout" */
+            width: 90%;
+            margin: 40px auto;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .download-btn {
+            background: var(--accent);
+            color: white !important;
+            padding: 15px 30px;
             border-radius: 12px;
+            font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            transition: transform 0.2s, background 0.2s;
+            gap: 10px;
+            transition: transform 0.2s ease;
         }
 
-        .proj-btn.download-btn:hover {
-            background: var(--accent);
+        .download-btn:hover {
             transform: translateY(-3px);
+            background: #1d4ed8;
         }
     </style>
 </head>
 <body>
-<div class=\"bg-mesh\"></div>
+<div class="bg-mesh"></div>
 
 <nav>
     <a href="index.html" class="logo">Abderrahim <span>DOUFANI</span></a>
@@ -88,92 +99,54 @@
 <section class="proj-hero rv">
     <div class="proj-container">
         <h1>Mes Projets</h1>
-        <p>Découvrez les missions techniques et les projets d'infrastructure que j'ai réalisés durant mon parcours en BTS SIO SISR.</p>
+        <p>Découvrez les missions techniques et les projets d'infrastructure réalisés en entreprise et en formation.</p>
     </div>
 </section>
 
 <section class="cr-section rv">
-    <h2 style="font-weight: 800; font-size: 1.6rem; color: var(--primary); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
-        COMPTE RENDU D’ACTIVITÉ EN périodes de stage
-    </h2>
-    <a href="assets/tableau-synthese-doufani.pdf" class="proj-btn download-btn" download>
+    <h2 class="cr-title">COMPTE RENDU D’ACTIVITÉ EN périodes de stage</h2>
+    <p style="margin-bottom: 25px; color: var(--muted);">Retrouvez mon tableau de synthèse récapitulant l'ensemble de mes compétences validées.</p>
+    <a href="assets/tableau-synthese-doufani.pdf" class="download-btn" download>
         <i class="fa-solid fa-file-pdf"></i> Télécharger mon Tableau de Synthèse (E4)
     </a>
 </section>
 
 <section class="stage-section rv">
-    <div style="text-align: center; margin-bottom: 40px;">
+    <div style="text-align: center;">
         <h2 style="font-weight: 800; font-size: 1.8rem; color: var(--primary);">Missions réalisées en entreprise et en formation</h2>
         <div style="width: 60px; height: 4px; background: var(--accent); margin: 15px auto; border-radius: 2px;"></div>
     </div>
 
     <div class="stage-cards">
         <div class="stage-card rv">
-            <div class="stage-badge">SNCF-E</div>
-            <h3>Support et Gestion d'Incidents</h3>
-            <p>Gestion des tickets (REQ, RITM, SCTASK) via ServiceNow et administration des comptes utilisateurs sur Active Directory.</p>
-            <div class="stage-tags">
-                <span class="tag">ServiceNow</span>
-                <span class="tag">Active Directory</span>
-                <span class="tag">Support IT</span>
-            </div>
-            <button class="proj-btn" onclick="openIncidentModal()">
-                <i class="fa-solid fa-circle-info"></i> Voir les détails
-            </button>
+            <div class="stage-badge">SNCF</div>
+            <h3>Support & Incidents</h3>
+            <p>Gestion des tickets ServiceNow et administration Active Directory (Mon-ad sncf).</p>
+            <button class="proj-btn" onclick="openIncidentModal()">En savoir plus</button>
         </div>
 
         <div class="stage-card rv">
             <div class="stage-badge">IDEACTIF</div>
             <h3>Déploiement WiFi 6</h3>
-            <p>Assistant chef de projet pour la mise à jour de l'infrastructure sans fil. Configuration de routeurs sur serveurs virtuels.</p>
-            <div class="stage-tags">
-                <span class="tag">WiFi 6</span>
-                <span class="tag">Routeurs Virtuels</span>
-                <span class="tag">Infrastructure</span>
-            </div>
-            <button class="proj-btn" onclick="openWifiModal()">
-                <i class="fa-solid fa-circle-info"></i> Voir les détails
-            </button>
+            <p>Expansion du réseau de bornes WiFi6 et vérification des routeurs sur serveur virtuel.</p>
+            <button class="proj-btn" onclick="openWifiModal()">En savoir plus</button>
         </div>
 
         <div class="stage-card rv">
             <div class="stage-badge">IDEACTIF</div>
-            <h3>Gestion des Accès Physiques</h3>
-            <p>Mise en place et configuration de badges de sécurité via le logiciel Morphomanager pour le contrôle d'accès de l'agence.</p>
-            <div class="stage-tags">
-                <span class="tag">Morphomanager</span>
-                <span class="tag">Sécurité</span>
-                <span class="tag">Caméras IP</span>
-            </div>
-            <button class="proj-btn" onclick="openBadgeModal()">
-                <i class="fa-solid fa-circle-info"></i> Voir les détails
-            </button>
+            <h3>Badges Morphomanager</h3>
+            <p>Configuration des accès physiques et sécurité des locaux via badges biométriques.</p>
+            <button class="proj-btn" onclick="openBadgeModal()">En savoir plus</button>
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="f-logo">ABDERRAHIM<span style="color:var(--accent);">.</span></div>
-    <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
-    <div class="f-socials">
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:douaniabdrahim@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#"><i class="fa-brands fa-github"></i></a>
-    </div>
-</footer>
 
 <div class="modal" id="incidentModal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('incidentModal')"><i class="fa-solid fa-xmark"></i></button>
         <h2>Support et Gestion d'Incidents - SNCF</h2>
         <div class="modal-body">
-            <p><strong>Contexte :</strong> Intervention au sein de la DSNU de la SNCF.</p>
-            <p><strong>Missions :</strong></p>
-            <ul>
-                <li>Gestion des incidents et demandes via <strong>ServiceNow</strong>.</li>
-                <li>Administration de l'<strong>Active Directory</strong> (Mon-ad sncf) : réinitialisation de mots de passe, gestion des droits.</li>
-                <li>Accompagnement et restitution des postes clients.</li>
-            </ul>
+            <p><strong>Missions :</strong> Gestion ServiceNow (REQ, RITM, SCTASK) et administration Active Directory.</p>
         </div>
     </div>
 </div>
@@ -183,12 +156,7 @@
         <button class="modal-close" onclick="closeModal('wifiModal')"><i class="fa-solid fa-xmark"></i></button>
         <h2>Déploiement WiFi 6 - IDEACTIF</h2>
         <div class="modal-body">
-            <p><strong>Mission :</strong> Expansion du réseau sans fil de l'agence.</p>
-            <ul>
-                <li>Contrôle et vérification des routeurs WiFi sur serveur virtuel.</li>
-                <li>Mise en marche des caméras de surveillance liées au serveur.</li>
-                <li>Maintenance matérielle (écrans, imprimantes).</li>
-            </ul>
+            <p><strong>Détails :</strong> Mise à jour de l'infrastructure réseau sans fil et maintenance des routeurs virtuels.</p>
         </div>
     </div>
 </div>
@@ -196,30 +164,24 @@
 <div class="modal" id="badgeModal">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal('badgeModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Gestion des Accès Physiques - IDEACTIF</h2>
+        <h2>Badges IDEACTIF</h2>
         <div class="modal-body">
-            <p><strong>Logiciel :</strong> Morphomanager.</p>
-            <ul>
-                <li>Configuration des badges d'accès pour les collaborateurs.</li>
-                <li>Paramétrage des droits d'accès selon les zones sécurisées.</li>
-            </ul>
+            <p><strong>Détails :</strong> Utilisation du logiciel Morphomanager pour le contrôle d'accès sécurisé.</p>
         </div>
     </div>
 </div>
 
+<footer>
+    <div class="f-logo">ABDERRAHIM<span>.</span></div>
+    <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
+</footer>
+
 <script src="script.js"></script>
 <script>
-    function openIncidentModal() { document.getElementById('incidentModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function openWifiModal()     { document.getElementById('wifiModal').classList.add('active');     document.body.style.overflow = 'hidden'; }
-    function openBadgeModal()    { document.getElementById('badgeModal').classList.add('active');    document.body.style.overflow = 'hidden'; }
-    function closeModal(id)      { document.getElementById(id).classList.remove('active');           document.body.style.overflow = ''; }
-    
-    // Fermer avec Echap
-    document.addEventListener('keydown', function(e) { 
-        if (e.key === 'Escape') { 
-            ['incidentModal','wifiModal','badgeModal'].forEach(closeModal); 
-        } 
-    });
+    function openIncidentModal() { document.getElementById('incidentModal').classList.add('active'); }
+    function openWifiModal()     { document.getElementById('wifiModal').classList.add('active'); }
+    function openBadgeModal()    { document.getElementById('badgeModal').classList.add('active'); }
+    function closeModal(id)      { document.getElementById(id).classList.remove('active'); }
 </script>
 </body>
 </html>
