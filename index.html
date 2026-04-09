@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abderrahim DOUFANI | Portfolio BTS SIO SISR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bg-mesh"></div>
+
+<nav>
+    <a href="index.html" class="logo">Abderrahim <span>DOUFANI</span></a>
+    <ul id="navMenu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="nav-btns">
+        <button class="theme-toggle" id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+        <a href="cv_doufani_abderrahim.pdf" class="btn btn-dark" target="_blank"><i class="fa-solid fa-download"></i> CV</a>
+    </div>
+</nav>
+
+<header>
+    <div class="hero-badge rv">
+        <span class="dot-green"></span>
+        Recherche alternance – Licence Pro Systèmes &amp; Réseaux
+    </div>
+    <h1 class="rv">
+        Abderrahim DOUFANI<br>
+        <span class="grad" id="tw"></span><span class="cursor">|</span>
+    </h1>
+    <p class="hero-desc rv">
+        Passionné par l'administration système et réseau.<br>
+        Découvrez mon parcours et mes expériences chez <strong>SNCF</strong> et <strong>IDEACTIF</strong>.
+    </p>
+    <div class="hero-actions rv">
+        <a href="parcours.html" class="btn btn-dark" style="padding:13px 30px; font-size:.93rem;">
+            <i class="fa-solid fa-arrow-right"></i> Voir mon parcours
+        </a>
+        <a href="projets.html" class="btn btn-outline" style="padding:13px 30px; font-size:.93rem;">
+            <i class="fa-solid fa-folder-open"></i> Mes projets
+        </a>
+        <a href="cv_doufani_abderrahim.pdf" class="btn btn-white" download>
+            <i class="fa-solid fa-file-pdf"></i> Télécharger CV
+        </a>
+    </div>
+</header>
+
+<section>
+    <div class="sec-head rv">
+        <h2 class="sec-title">Qui suis-je ?</h2>
+        <p class="sec-sub">Étudiant passionné par les infrastructures IT et la cybersécurité.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+        <div class="sk-card rv">
+            <div class="sk-ico i-sys"><i class="fa-solid fa-user-graduate"></i></div>
+            <div class="sk-title">Formation</div>
+            <p style="font-size:.9rem; color:var(--muted); line-height:1.7;">Étudiant en BTS SIO option SISR au Lycée René Descartes (Champs-sur-Marne), spécialisé dans l'administration des infrastructures systèmes et réseaux.</p>
+        </div>
+        <div class="sk-card rv">
+            <div class="sk-ico i-net"><i class="fa-solid fa-building"></i></div>
+            <div class="sk-title">Expérience</div>
+            <p style="font-size:.9rem; color:var(--muted); line-height:1.7;">Missions en entreprise : support et gestion d'incidents à la SNCF (ServiceNow, Active Directory), déploiement réseau WiFi 6 et gestion d'accès physiques chez IDEACTIF.</p>
+        </div>
+        <div class="sk-card rv">
+            <div class="sk-ico i-sec"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="sk-title">Objectif</div>
+            <p style="font-size:.9rem; color:var(--muted); line-height:1.7;">Intégrer une Licence Professionnelle en alternance dans le domaine des systèmes et réseaux, avec un intérêt marqué pour la cybersécurité et les infrastructures critiques.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="f-logo">ABDOU<span style="color:var(--accent);">.</span></div>
+    <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
+    <div class="f-socials">
+        <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:douaniabdrahim@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
