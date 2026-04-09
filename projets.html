@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* --- FIX LISIBILITÉ ET MISE EN PAGE --- */
-        
         .stage-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -27,9 +26,9 @@
         }
 
         .stage-card {
-            flex: 0 1 380px; /* Plus large pour que le texte ne soit pas compressé */
+            flex: 0 1 380px; 
             background: var(--card);
-            padding: 35px; /* Plus d'espace interne */
+            padding: 35px; 
             border-radius: 20px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
@@ -66,7 +65,7 @@
             border: 1px dashed var(--accent);
         }
 
-        .download-btn {
+        .download-btn, .card-link-btn {
             background: var(--accent);
             color: white !important;
             padding: 16px 32px;
@@ -75,18 +74,21 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: auto; /* Aligne le bouton en bas de la carte */
+            transition: background 0.2s;
         }
 
-        /* --- MODALES RÉTRÉCIES --- */
-        .modal-content {
-            max-width: 750px;
-            width: 90%;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 24px;
+        .card-link-btn {
+            padding: 12px 24px;
+            font-size: 0.9rem;
         }
+
+        .download-btn:hover, .card-link-btn:hover {
+            background: #1d4ed8;
+        }
+
     </style>
 </head>
 <body>
@@ -116,15 +118,15 @@
 
 <section class="cr-section rv">
     <h2 style="font-weight: 800; color: var(--primary); margin-bottom: 10px;">COMPTE RENDU D’ACTIVITÉ</h2>
-    <p>Tableau de synthèse des compétences validées en périodes de stage.</p>
-    <a href="assets/tableau-synthese-doufani.pdf" class="download-btn" download>
+    <p>Retrouvez mon tableau de synthèse récapitulant l'ensemble de mes compétences validées.</p>
+    <a href="assets/tableau-synthese-doufani.pdf" class="download-btn" target="_blank">
         <i class="fa-solid fa-file-pdf"></i> Télécharger le Tableau de Synthèse (E4)
     </a>
 </section>
 
 <section class="stage-section">
     <div style="text-align: center; margin-bottom: 20px;">
-        <h2 style="font-weight: 800; color: var(--primary);">Missions en Entreprise</h2>
+        <h2 style="font-weight: 800; color: var(--primary);">Missions réalisées en entreprise</h2>
         <div style="width: 50px; height: 4px; background: var(--accent); margin: 10px auto; border-radius: 2px;"></div>
     </div>
 
@@ -132,64 +134,36 @@
         <div class="stage-card rv">
             <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">SNCF - DSNU</div>
             <h3>Support & Incidents</h3>
-            <p>Gestion des tickets ServiceNow (REQ, RITM, SCTASK) et administration des comptes via Active Directory (Mon-ad).</p>
-            <button class="proj-btn" onclick="openModal('incidentModal')">Détails de la mission</button>
+            <p>Gestion des tickets ServiceNow (REQ, RITM, SCTASK) et administration des comptes utilisateurs via Active Directory (Mon-ad sncf).</p>
+            <a href="assets/tableau-synthese-doufani.pdf" target="_blank" class="card-link-btn">
+                <i class="fa-solid fa-file-lines"></i> Détails de la mission
+            </a>
         </div>
 
         <div class="stage-card rv">
             <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">IDEACTIF</div>
             <h3>Déploiement WiFi 6</h3>
-            <p>Mise à jour de l'infrastructure sans fil et supervision des routeurs sur serveurs virtuels pour l'agence.</p>
-            <button class="proj-btn" onclick="openModal('wifiModal')">Détails de la mission</button>
+            <p>Assistant chef de projet : mise à jour de l'infrastructure sans fil et supervision des routeurs sur serveurs virtuels.</p>
+            <a href="assets/tableau-synthese-doufani.pdf" target="_blank" class="card-link-btn">
+                <i class="fa-solid fa-file-lines"></i> Détails de la mission
+            </a>
         </div>
 
         <div class="stage-card rv">
             <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">IDEACTIF</div>
             <h3>Badges & Sécurité</h3>
-            <p>Configuration des accès physiques via Morphomanager et gestion de la surveillance IP du site.</p>
-            <button class="proj-btn" onclick="openModal('badgeModal')">Détails de la mission</button>
+            <p>Configuration des accès physiques via le logiciel Morphomanager et gestion de la surveillance IP du site.</p>
+            <a href="assets/tableau-synthese-doufani.pdf" target="_blank" class="card-link-btn">
+                <i class="fa-solid fa-file-lines"></i> Détails de la mission
+            </a>
         </div>
     </div>
 </section>
 
-<div class="modal" id="incidentModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('incidentModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Support IT - SNCF</h2>
-        <div class="modal-body">
-            <p>Intervention sur les postes clients, résolution d'incidents matériels et logiciels via ServiceNow.</p>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="wifiModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('wifiModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Infrastructure WiFi 6</h2>
-        <div class="modal-body">
-            <p>Installation et configuration de bornes WiFi6 pour améliorer la connectivité de l'entreprise.</p>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="badgeModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('badgeModal')"><i class="fa-solid fa-xmark"></i></button>
-        <h2>Contrôle d'Accès</h2>
-        <div class="modal-body">
-            <p>Gestion logicielle des droits d'entrée et maintenance des lecteurs biométriques.</p>
-        </div>
-    </div>
-</div>
-
-<footer style="margin-top: 60px;">
-    <p>&copy; 2026 Abderrahim DOUFANI</p>
+<footer style="margin-top: 60px; text-align: center; padding: 40px; border-top: 1px solid var(--border-color);">
+    <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
 </footer>
 
 <script src="script.js"></script>
-<script>
-    function openModal(id) { document.getElementById(id).classList.add('active'); }
-    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-</script>
 </body>
 </html>
