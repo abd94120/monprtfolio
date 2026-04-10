@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | Abderrahim DOUFANI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* --- FIX LISIBILITÉ ET MISE EN PAGE --- */
+        .stage-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .stage-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stage-card {
+            flex: 0 1 380px; 
+            background: var(--card);
+            padding: 35px; 
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .stage-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .stage-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        /* --- SECTION COMPTE RENDU --- */
+        .cr-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 50px 30px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 24px;
+            border: 1px dashed var(--accent);
+        }
+
+        /* --- SECTION TABLEAU DE SYNTHÈSE --- */
+        .synthese-section {
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(37, 99, 235, 0.04);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .synthese-section .synthese-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        .synthese-section h2 {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .synthese-section p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0;
+        }
+
+        .download-btn, .card-link-btn {
+            background: var(--accent);
+            color: white !important;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: auto;
+            transition: background 0.2s;
+        }
+
+        .card-link-btn {
+            padding: 12px 24px;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover, .card-link-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* --- SECTION TRAVAUX PRATIQUES --- */
+        .tp-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 60px 20px;
+        }
+
+        .tp-tag {
+            color: #16a34a;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .tp-section .stage-card h3 {
+            color: var(--primary);
+        }
+
+        .tp-section .card-link-btn {
+            background: #16a34a;
+        }
+
+        .tp-section .card-link-btn:hover {
+            background: #15803d;
+        }
+
+        /* Séparateur entre les deux sections cartes */
+        .section-divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            border: none;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+<div class="bg-mesh"></div>
+
+<nav>
+    <a href="index.html" class="logo">Abderrahim <span>DOUFANI</span></a>
+    <ul id="navMenu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html" class="active">Projets</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<section class="proj-hero rv">
+    <div class="proj-container" style="text-align: center;">
+        <h1>Mes Projets & Missions</h1>
+        <p>Infrastructures, systèmes et réseaux : mes réalisations concrètes.</p>
+    </div>
+</section>
+
+<!-- COMPTE RENDU D'ACTIVITÉ -->
+<section class="cr-section rv">
+    <h2 style="font-weight: 800; color: var(--primary); margin-bottom: 10px;">COMPTE RENDU D'ACTIVITÉ</h2>
+    <p>Retrouvez mon tableau de synthèse récapitulant l'ensemble de mes compétences validées.</p>
+    <a href="compterendustage.pdf" class="download-btn" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger le Compte rendu d'activité.
+    </a>
+</section>
+
+<!-- TABLEAU DE SYNTHÈSE DES RÉALISATIONS PROFESSIONNELLES -->
+<section class="synthese-section rv" style="max-width: 1000px; margin: 0 auto 40px auto; padding: 40px 30px;">
+    <div class="synthese-icon"><i class="fa-solid fa-table-list"></i></div>
+    <h2>Tableau de synthèse des réalisations professionnelles</h2>
+    <p>Document récapitulatif de l'ensemble des activités et compétences mobilisées au cours de mes stages et missions en entreprise.</p>
+    <a href="assets/tableau-synthese-doufani.pdf" class="download-btn" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i> Ouvrir le tableau de synthèse
+    </a>
+</section>
+
+<!-- MISSIONS EN ENTREPRISE -->
+<section class="stage-section">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h2 style="font-weight: 800; color: var(--primary);">Missions réalisées en entreprise</h2>
+        <div style="width: 50px; height: 4px; background: var(--accent); margin: 10px auto; border-radius: 2px;"></div>
+    </div>
+
+    <div class="stage-cards">
+        <div class="stage-card rv">
+            <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">SNCF - DSNU</div>
+            <h3>Support & Incidents</h3>
+            <p>Gestion des tickets ServiceNow (REQ, RITM, SCTASK) et administration des comptes utilisateurs via Active Directory (Mon-ad sncf).</p>
+            <a href="compterendustage.pdf" target="_blank" class="card-link-btn">
+                <i class="fa-solid fa-file-lines"></i> Détails de la mission
+            </a>
+        </div>
+
+        <div class="stage-card rv">
+            <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">IDEACTIF</div>
+            <h3>Déploiement WiFi 6</h3>
+            <p>Assistant chef de projet : mise à jour de l'infrastructure sans fil et supervision des routeurs sur serveurs virtuels.</p>
+            <a href="compterendustage.pdf" target="_blank" class="card-link-btn">
+                <i class="fa-solid fa-file-lines"></i> Détails de la mission
+            </a>
+        </div>
+
+        <div class="stage-card rv">
+            <div style="color: var(--accent); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">IDEACTIF</div>
+            <h3>Badges & Sécurité</h3>
+            <p>Configuration des accès physiques via le logiciel Morphomanager et gestion de la surveillance IP du site.</p>
+            <a href="compterendustage.pdf" target="_blank" class="card-link-btn">
+                <i class="fa-solid fa-file-lines"></i> Détails de la mission
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SÉPARATEUR -->
+<hr class="section-divider" style="margin: 20px auto 0 auto;">
+
+<!-- TRAVAUX PRATIQUES -->
+<section class="tp-section">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h2 style="font-weight: 800; color: var(--primary);">Travaux Pratiques</h2>
+        <div style="width: 50px; height: 4px; background: #16a34a; margin: 10px auto; border-radius: 2px;"></div>
+        <p style="color: var(--muted); font-size: 0.95rem; margin-top: 10px;">Projets réalisés en cours de formation</p>
+    </div>
+
+    <div class="stage-cards">
+        <!-- TP 1 : pfSense -->
+        <div class="stage-card rv">
+            <div class="tp-tag">Sécurité réseau</div>
+            <h3>Configuration d'un firewall pfSense</h3>
+            <p>Mise en place d'un pare-feu périmétrique, gestion des règles de filtrage (LAN/WAN) et NAT.</p>
+            <a href="assets/doc-pfsense.pdf" target="_blank" class="card-link-btn" style="background: #16a34a;">
+                <i class="fa-solid fa-file-lines"></i> Voir la documentation
+            </a>
+        </div>
+
+        <!-- TP 2 : VPN -->
+        <div class="stage-card rv">
+            <div class="tp-tag">Réseau & Sécurité</div>
+            <h3>Mise en place d'un VPN (Site à Site et Nomade)</h3>
+            <p>Configuration de tunnels sécurisés IPsec pour relier deux sites et OpenVPN pour les accès distants des collaborateurs.</p>
+            <a href="assets/doc-vpn.pdf" target="_blank" class="card-link-btn" style="background: #16a34a;">
+                <i class="fa-solid fa-file-lines"></i> Voir la documentation
+            </a>
+        </div>
+
+        <!-- TP 3 : Apache2 -->
+        <div class="stage-card rv">
+            <div class="tp-tag">Serveur Web</div>
+            <h3>Installation et configuration d'Apache2</h3>
+            <p>Déploiement d'un serveur web sous Linux, gestion des Virtual Hosts et sécurisation via certificats SSL.</p>
+            <a href="assets/doc-apache.pdf" target="_blank" class="card-link-btn" style="background: #16a34a;">
+                <i class="fa-solid fa-file-lines"></i> Voir la documentation
+            </a>
+        </div>
+
+        <!-- TP 4 : RAID -->
+        <div class="stage-card rv">
+            <div class="tp-tag">Stockage & Tolérance aux pannes</div>
+            <h3>Mise en place de RAID logiciel (RAID 1 & RAID 5)</h3>
+            <p>Sécurisation des données et tolérance aux pannes via la configuration de grappes de disques sur serveur Debian.</p>
+            <a href="assets/doc-raid.pdf" target="_blank" class="card-link-btn" style="background: #16a34a;">
+                <i class="fa-solid fa-file-lines"></i> Voir la documentation
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer style="margin-top: 60px; text-align: center; padding: 40px; border-top: 1px solid var(--border-color);">
+    <p>&copy; 2026 Abderrahim DOUFANI — Portfolio BTS SIO SISR</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
